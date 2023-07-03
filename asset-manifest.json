@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.babbf9ae.css",
-    "main.js": "/static/js/main.f14a5638.js",
+    "main.css": "/static/css/main.8bc322fd.css",
+    "main.js": "/static/js/main.65b77286.js",
     "static/js/787.e6ced320.chunk.js": "/static/js/787.e6ced320.chunk.js",
     "static/media/philosopher_bold_italic.eot": "/static/media/philosopher_bold_italic.e88fa16105e5247a4164.eot",
     "static/media/philosopher_bold_italic.ttf": "/static/media/philosopher_bold_italic.aabf68ea2cbf84b9ef2c.ttf",
@@ -9,12 +9,12 @@
     "static/media/philosopher_bold_italic.woff": "/static/media/philosopher_bold_italic.07b1c5757468f50b7bad.woff",
     "static/media/philosopher_bold_italic.woff2": "/static/media/philosopher_bold_italic.cfa382a94e0dfbad4a04.woff2",
     "index.html": "/index.html",
-    "main.babbf9ae.css.map": "/static/css/main.babbf9ae.css.map",
-    "main.f14a5638.js.map": "/static/js/main.f14a5638.js.map",
+    "main.8bc322fd.css.map": "/static/css/main.8bc322fd.css.map",
+    "main.65b77286.js.map": "/static/js/main.65b77286.js.map",
     "787.e6ced320.chunk.js.map": "/static/js/787.e6ced320.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.babbf9ae.css",
-    "static/js/main.f14a5638.js"
+    "static/css/main.8bc322fd.css",
+    "static/js/main.65b77286.js"
   ]
 }
