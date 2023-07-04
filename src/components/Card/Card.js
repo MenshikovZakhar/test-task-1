@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Card({ card }) {
+function Cards({ card }) {
 
     return (
         <li className="elements__card">
@@ -14,4 +14,4 @@ function Card({ card }) {
     );
 }
 
-export default Card;
+export default Cards;
