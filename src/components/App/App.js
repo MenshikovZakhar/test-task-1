@@ -38,7 +38,13 @@ function App() {
   return (
     <div className='page'>
       <Cards cards={cards} />
-      <button type="submit" onClick={handleClick} >Ещё</button>
+
+      {
+        ref.current < 10 ?
+          <button type="submit" onClick={handleClick} >Ещё</button>
+          : null
+      }
+
     </div>
   )
 }
