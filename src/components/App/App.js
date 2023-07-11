@@ -7,6 +7,20 @@ import { useRef } from 'react';
 
 function App() {
   const [cards, setCards] = useState([]);
+  const [isLiked, setIsLiked] = useState(JSON.parse(localStorage.getItem('isLiked')) || false);
+
+
+  useEffect(() => {
+    window.localStorage.setItem('isLiked', JSON.stringify(isLiked));
+
+  }, [isLiked]);
+
+
+  const handleCardLike = (e) => {
+    setIsLiked(!isLiked);
+
+  };
+
 
   useEffect(() => {
     Promise.all([
@@ -36,9 +50,12 @@ function App() {
   }
 
 
+
+
+
   return (
     <div className='page'>
-      <Cards cards={cards} />
+      <Cards cards={cards} onCardLike={handleCardLike} isLiked={isLiked} />
 
       {
         ref.current < 10 ?

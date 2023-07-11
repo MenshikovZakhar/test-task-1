@@ -3,7 +3,7 @@ import React from 'react';
 
 
 
-function Cards({ cards, onCardLike }) {
+function Cards({ cards, onCardLike, isLiked }) {
 
     return (
         <main className="content">
@@ -14,6 +14,7 @@ function Cards({ cards, onCardLike }) {
                             return (<Card card={card}
                                 key={card.id}
                                 onCardLike={onCardLike}
+                                isLiked={isLiked}
                             />)
                         })
                         : null}
