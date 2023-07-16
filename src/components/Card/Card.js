@@ -1,14 +1,29 @@
-import React from 'react';
-import './Card.css';
-function Cards({ card, onCardLike, isLiked }) {
 
+import './Card.css';
+import React, { useEffect, useState } from "react";
+function Card({ card, index }) {
+
+    const [isLiked, setIsLiked] = useState(JSON.parse(localStorage.getItem('isLiked')) || false);
+
+
+    useEffect(() => {
+        window.localStorage.setItem('isLiked', JSON.stringify(isLiked));
+
+
+    }, [isLiked]);
+
+
+    const handleCardLike = () => {
+        setIsLiked(!isLiked);
+
+    };
     //определяем, наличие у карточки лайка
 
     //переменная в `className` для кнопки лайк
     const cardLikeButtonClassName = `elements__like ${isLiked && 'elements__like_active'}`
-    function handleLikeClick() {
-        onCardLike(card);
-    }
+
+
+
     return (
         <li className="elements__card">
             <img className="elements__image" src={card.link} alt={card.name} />
@@ -16,7 +31,7 @@ function Cards({ card, onCardLike, isLiked }) {
                 <h2 className="elements__title">{card.title}</h2>
                 <p className="element__like-counter">{card.price}</p>
                 <div className="element__like_ui">
-                    <button type="button" className={cardLikeButtonClassName} aria-label="Нравиться" onClick={handleLikeClick}></button>
+                    <button type="button" className={cardLikeButtonClassName} aria-label="Нравиться" onClick={handleCardLike}></button>
                 </div>
             </div>
         </li>
@@ -24,4 +39,4 @@ function Cards({ card, onCardLike, isLiked }) {
     );
 }
 
-export default Cards;
+export default Card;
