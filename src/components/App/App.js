@@ -6,20 +6,41 @@ import axios from "axios";
 import { useRef } from 'react';
 
 function App() {
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState(JSON.parse(localStorage.getItem('cards')));
+
+
+  const handleCardLike = (id, bron) => {
+    setCards(
+      cards.map((it) => {
+        if (it.id === id) it.isLiked = bron;
+        return it;
+      })
+    );
+    localStorage.setItem('cards', JSON.stringify(cards));
+    console.log(cards)
+  };
+
+  useEffect(() => {
+    setCards(JSON.parse(localStorage.getItem('cards')));
+  }, []);
 
 
   useEffect(() => {
-    Promise.all([
-      axios.get('https://testguru.ru/frontend-test/api/v1/items?page=1'),
-      axios.get('https://testguru.ru/frontend-test/api/v1/items?page=2')
-    ]).then(resp => {
-      const array = resp[0].data.items.concat(resp[1].data.items);
-      setCards(array);
-    })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (localStorage.getItem("cards") !== null) {
+      setCards(JSON.parse(localStorage.getItem('cards')));
+    } else {
+      Promise.all([
+        axios.get('https://testguru.ru/frontend-test/api/v1/items?page=1'),
+        axios.get('https://testguru.ru/frontend-test/api/v1/items?page=2')
+      ]).then(resp => {
+        const array = resp[0].data.items.concat(resp[1].data.items);
+        setCards(array);
+
+      })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, []);
 
   let ref = useRef(2);
@@ -42,7 +63,7 @@ function App() {
 
   return (
     <div className='page'>
-      <Cards cards={cards} />
+      <Cards cards={cards} onCardLike={handleCardLike} />
 
       {
         ref.current < 10 ?

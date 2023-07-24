@@ -3,7 +3,7 @@ import React from 'react';
 
 
 
-function Cards({ cards, index }) {
+function Cards({ cards, onCardLike }) {
 
     return (
         <main className="content">
@@ -13,7 +13,9 @@ function Cards({ cards, index }) {
                         ? Array.from(cards).map((card) => {
                             return (<Card card={card}
                                 key={card.id}
-                                index={card.id}
+                                id={card.id}
+                                onCardLike={onCardLike}
+
 
                             />)
                         })

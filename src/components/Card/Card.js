@@ -1,8 +1,8 @@
 import axios from "axios";
 import './Card.css';
 import React, { useEffect, useState } from "react";
-function Card({ card, index }) {
-    const [isLiked, setIsLiked] = useState(JSON.parse(localStorage.getItem('isLiked')) || false);
+function Card({ card, onCardLike }) {
+
     const [images, setImages] = useState([]);
 
     useEffect(() => {
@@ -17,25 +17,10 @@ function Card({ card, index }) {
             });
     }, []);
 
+    function handleCardLike() {
+        onCardLike(card.id, !card.isLiked);
+    }
 
-
-
-    const handleCardLike = (index) => {
-
-        let isLiked = {
-            id: index,
-            isliked: false
-        };
-        localStorage.setItem('isLiked', JSON.stringify(isLiked));
-        setIsLiked(isLiked.isliked);
-
-    };
-
-
-    //определяем, наличие у карточки лайка
-
-    //переменная в `className` для кнопки лайк
-    const cardLikeButtonClassName = `elements__like ${isLiked.isliked && 'elements__like_active'}`
 
 
 
@@ -47,7 +32,8 @@ function Card({ card, index }) {
                 <h2 className="elements__title">{card.title}</h2>
                 <p className="element__like-counter">{card.price}</p>
                 <div className="element__like_ui">
-                    <button type="button" className={cardLikeButtonClassName} aria-label="Нравиться" onClick={handleCardLike}></button>
+                    <button type="button" className={card?.isLiked ? 'elements__like elements__like_active' : 'elements__like'}
+                        aria-label="Нравиться" card={card} onClick={handleCardLike} ></button>
                 </div>
             </div>
         </li>
