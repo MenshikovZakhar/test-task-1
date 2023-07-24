@@ -1,8 +1,9 @@
 import axios from "axios";
 import './Card.css';
 import React, { useEffect, useState } from "react";
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from "../Skeleton/Skeleton";
+
+
 function Card({ card, onCardLike, loading }) {
     const [loadings, setLoadings] = useState();
     const [images, setImages] = useState([]);
