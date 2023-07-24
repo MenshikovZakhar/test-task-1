@@ -3,6 +3,9 @@ import './Card.css';
 import React, { useEffect, useState } from "react";
 import Skeleton from "../Skeleton/Skeleton";
 
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+
 
 function Card({ card, onCardLike, loading }) {
     const [loadings, setLoadings] = useState();
@@ -35,7 +38,18 @@ function Card({ card, onCardLike, loading }) {
         <div>
             {!loadings && !loading ? <Skeleton /> :
                 <li className="elements__card">
-                    <img className="elements__image" src={images} alt={card.name} />
+
+                    <Carousel infiniteLoop showThumbs={false}>
+                        <div>
+                            <img className="elements__image" src={images} alt={card.name} />
+                        </div>
+                        <div>
+                            <img className="elements__image" src={images} alt={card.name} />
+                        </div>
+                        <div>
+                            <img className="elements__image" src={images} alt={card.name} />
+                        </div>
+                    </Carousel>
 
                     <div className="elements__description">
                         <h2 className="elements__title">{card.title}</h2>
