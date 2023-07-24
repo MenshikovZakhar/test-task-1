@@ -5,9 +5,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRef } from 'react';
 
+
 function App() {
   const [cards, setCards] = useState(JSON.parse(localStorage.getItem('cards')));
-
+  const [loading, setLoading] = useState();
 
   const handleCardLike = (id, bron) => {
     setCards(
@@ -29,6 +30,7 @@ function App() {
     if (localStorage.getItem("cards") !== null) {
       setCards(JSON.parse(localStorage.getItem('cards')));
     } else {
+      setLoading(false);
       Promise.all([
         axios.get('https://testguru.ru/frontend-test/api/v1/items?page=1'),
         axios.get('https://testguru.ru/frontend-test/api/v1/items?page=2')
@@ -39,7 +41,10 @@ function App() {
       })
         .catch((error) => {
           console.log(error);
-        });
+        })
+        .finally(() => {
+          setLoading(true)
+        })
     }
   }, []);
 
@@ -57,13 +62,9 @@ function App() {
       })
   }
 
-
-
-
-
   return (
     <div className='page'>
-      <Cards cards={cards} onCardLike={handleCardLike} />
+      <Cards cards={cards} loading={loading} onCardLike={handleCardLike} />
 
       {
         ref.current < 10 ?
