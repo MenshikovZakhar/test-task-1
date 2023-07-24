@@ -14,3 +14,8 @@
   width: 100%;
   margin: 0 auto;
 }
+
+.scrolltop {
+  background-image: url(../../images/img-top.png);
+  background-size: cover;
+}

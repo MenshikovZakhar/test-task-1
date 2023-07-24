@@ -4,7 +4,7 @@ import Cards from "../Cards/Cards";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRef } from 'react';
-
+import ScrollToTop from "react-scroll-to-top";
 
 function App() {
   const [cards, setCards] = useState(JSON.parse(localStorage.getItem('cards')));
@@ -64,6 +64,7 @@ function App() {
 
   return (
     <div className='page'>
+      <ScrollToTop smooth className="scrolltop" viewBox="0 0 24 24" />
       <Cards cards={cards} loading={loading} onCardLike={handleCardLike} />
 
       {
