@@ -7,7 +7,7 @@ import { useRef } from 'react';
 import ScrollToTop from "react-scroll-to-top";
 
 function App() {
-  const [cards, setCards] = useState(JSON.parse(localStorage.getItem('cards')));
+  const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState();
 
   const handleCardLike = (id, bron) => {
@@ -27,17 +27,18 @@ function App() {
 
 
   useEffect(() => {
+    setLoading(false);
     if (localStorage.getItem("cards") !== null) {
       setCards(JSON.parse(localStorage.getItem('cards')));
     } else {
-      setLoading(false);
+
       Promise.all([
         axios.get('https://testguru.ru/frontend-test/api/v1/items?page=1'),
-        axios.get('https://testguru.ru/frontend-test/api/v1/items?page=2')
+        axios.get('https://testguru.ru/frontend-test/api/v1/items?page=2'),
       ]).then(resp => {
         const array = resp[0].data.items.concat(resp[1].data.items);
         setCards(array);
-
+        console.log(resp)
       })
         .catch((error) => {
           console.log(error);

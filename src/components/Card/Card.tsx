@@ -1,15 +1,16 @@
 import axios from "axios";
 import './Card.css';
-import React, { useEffect, useState } from "react";
+import * as React from 'react';
+import { useEffect, useState } from "react";
 import Skeleton from "../Skeleton/Skeleton";
-
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from 'react-responsive-carousel/lib/js'
 
 
 function Card({ card, onCardLike, loading }) {
-    const [loadings, setLoadings] = useState();
-    const [images, setImages] = useState([]);
+    const [loadings, setLoadings] = useState(false);
+    const [images, setImages] = useState();
+
 
     useEffect(() => {
         setLoadings(false);
@@ -31,24 +32,16 @@ function Card({ card, onCardLike, loading }) {
         onCardLike(card.id, !card.isLiked);
     }
 
-
-
-
     return (
         <div>
             {!loadings && !loading ? <Skeleton /> :
                 <li className="elements__card">
 
-                    <Carousel infiniteLoop showThumbs={false}>
+                    <Carousel infiniteLoop={true} showThumbs={false}>
                         <div>
                             <img className="elements__image" src={images} alt={card.name} />
                         </div>
-                        <div>
-                            <img className="elements__image" src={images} alt={card.name} />
-                        </div>
-                        <div>
-                            <img className="elements__image" src={images} alt={card.name} />
-                        </div>
+
                     </Carousel>
 
                     <div className="elements__description">
@@ -56,7 +49,7 @@ function Card({ card, onCardLike, loading }) {
                         <p className="element__like-counter">{card.price}</p>
                         <div className="element__like_ui">
                             <button type="button" className={card?.isLiked ? 'elements__like elements__like_active' : 'elements__like'}
-                                aria-label="Нравиться" card={card} onClick={handleCardLike} ></button>
+                                aria-label="Нравиться" onClick={handleCardLike} ></button>
                         </div>
                     </div>
                 </li>

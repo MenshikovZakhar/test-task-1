@@ -1,5 +1,5 @@
 import Card from "../Card/Card";
-import React from 'react';
+import * as React from 'react';
 
 
 
@@ -8,13 +8,12 @@ function Cards({ cards, onCardLike, loading }) {
     return (
         <main className="content">
             <section className="elements">
-                <ul className="elements__list">
+                <ul className="elements__list" >
 
                     {cards
-                        ? Array.from(cards).map((card) => {
+                        ? Array.from(cards).map((card, index) => {
                             return (<Card card={card}
-                                key={card.id}
-                                id={card.id}
+                                key={index}
                                 onCardLike={onCardLike}
                                 loading={loading}
 
