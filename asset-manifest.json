@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.aa9acd5b.css",
-    "main.js": "/static/js/main.330c1dd8.js",
+    "main.js": "/static/js/main.e314a98e.js",
     "static/js/787.e6ced320.chunk.js": "/static/js/787.e6ced320.chunk.js",
     "static/media/philosopher_bold_italic.eot": "/static/media/philosopher_bold_italic.e88fa16105e5247a4164.eot",
     "static/media/philosopher_bold_italic.ttf": "/static/media/philosopher_bold_italic.aabf68ea2cbf84b9ef2c.ttf",
@@ -12,11 +12,11 @@
     "index.html": "/index.html",
     "static/media/like-active.svg": "/static/media/like-active.fe17a515669479b1e649.svg",
     "main.aa9acd5b.css.map": "/static/css/main.aa9acd5b.css.map",
-    "main.330c1dd8.js.map": "/static/js/main.330c1dd8.js.map",
+    "main.e314a98e.js.map": "/static/js/main.e314a98e.js.map",
     "787.e6ced320.chunk.js.map": "/static/js/787.e6ced320.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.aa9acd5b.css",
-    "static/js/main.330c1dd8.js"
+    "static/js/main.e314a98e.js"
   ]
 }
