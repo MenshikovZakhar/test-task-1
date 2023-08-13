@@ -1,7 +1,5 @@
 import './Skeleton.css';
-
-
-
+import * as React from 'react';
 
 function Skeleton() {
     return (

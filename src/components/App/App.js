@@ -1,5 +1,4 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
 import Cards from "../Cards/Cards";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -21,15 +20,11 @@ function App() {
     console.log(cards)
   };
 
-  useEffect(() => {
-    setCards(JSON.parse(localStorage.getItem('cards')));
-  }, []);
-
 
   useEffect(() => {
     setLoading(false);
     if (localStorage.getItem("cards") !== null) {
-      setCards(JSON.parse(localStorage.getItem('cards')));
+      setCards(JSON.parse(localStorage.getItem('cards')))
     } else {
 
       Promise.all([
